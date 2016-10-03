@@ -75,8 +75,37 @@ See [Google Charts Ref](https://developers.google.com/chart/interactive/docs/gal
 
 > "LAMP is an archetypal model of web service solution stacks, named as an acronym of the names of its original four open-source components: the Linux operating system, the Apache HTTP Server, the MySQL relational database management system (RDBMS), and the PHP programming language. The LAMP components are largely interchangeable and not limited to the original selection. As a solution stack, LAMP is suitable for building dynamic web sites and web applications"  ** -wikipedia. **This provides a method of utilizing the large data collected from the DECAGON MySQL sever as well as providing a login system for customizable views of the aggregated data.
 
+----
+## Development Environment & LAMP:
+We have chosen a development environment consisting of Ubuntu14.10 and LAMP. To begin contributing to our project simply boot an Ubuntu14.10 box (or virtual machine) and download/install LAMP by entering the following commands in your terminal ('#' indicates a comment):
+
+    #change to home directory
+    cd ~
+
+    #update deb packages
+    sudo apt-get update
+
+    #upgrade outdated packages
+    sudo apt-get upgrade
+
+    #download XAMP through wget as download
+    wget http://sourceforge.net/projects/xampp/files/XAMPP%20Linux/1.8.3/xampp-linux-x64-1.8.3-2-installer.run/download
+
+    #Installer will be name download
+    mv download ~/Downloads/xampp-linux-x64-1.8.3-2-installer.run
+    cd ~/Downloads
+
+    #Give the installer permissions to run & install
+    chmod +x xampp-linux-x64-1.8.3-2-installer.run
+    sudo ./xampp-linux-x64-1.8.3-2-installer.run
+
+
 
 ----
 ## Contribution
 
 Not actively seeking contribution at this time
+
+
+
+
