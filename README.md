@@ -60,14 +60,15 @@ See
 
 > The Android Studio Development Kit provides a webApp interface to create a view in a downloadable app that may contain content not created on the device itself The Android SDK also provides interfaces to the physical device such as to support auxiliary functionality built in the phone and not serviced by the webApp. (e.g. Bluetooth, GPS, Wifi, etc). The Android SDK is also a likely candidate to alert the user to notifications about the sensors.This requires the user to have an Android phone however, and does not support notifications to users utilizing the web browser version of the WebApp. It is likely email alerts could be used in conjunction with the mobile App through an email daemon.
 
-See [ WebApp Ref. for Android ]
-( https://developer.android.com/guide/webapps/index.html)
+
+See [WebApp Ref. for Android](https://developer.android.com/guide/webapps/index.html)
+
 
  * Google Charts (UX visualization of Database candidate)
 
 > Google Charts provide interactive display of content either hardcoded in the JavaScript, or from cached resources such as Databases and spreadsheets. This could be a solution
 
-See [Google Charts Ref] (https://developers.google.com/chart/interactive/docs/gallery)
+See [Google Charts Ref](https://developers.google.com/chart/interactive/docs/gallery)
 
 
 * LAMP (Database and Login System)
