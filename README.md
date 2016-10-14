@@ -70,6 +70,11 @@ See [WebApp Ref. for Android](https://developer.android.com/guide/webapps/index.
 
 See [Google Charts Ref](https://developers.google.com/chart/interactive/docs/gallery)
 
+* Dygraphs (UX visualization of Database candidate)
+
+> Dygraphs also provide interactive display of content either hardcoded in the JavaScript, or from cached resources such as Databases and csv files. Dr. Leib indicated he would like functionality similar to the following:
+
+See [Dygraphs Range Selector](http://dygraphs.com/gallery/#g/range-selector)
 
 * LAMP (Database and Login System)
 
@@ -99,7 +104,8 @@ We have chosen a development environment consisting of Ubuntu14.10 and LAMP. To 
     chmod +x xampp-linux-x64-1.8.3-2-installer.run
     sudo ./xampp-linux-x64-1.8.3-2-installer.run
 
-
+See
+[QuickStart](https://bitbucket.org/tnpaul9/embedded-systems/src/35624b5818baedfcac60f28eb0ecc2b11dfe93f7/howtoDB/?at=master)
 
 ----
 ## Contribution
@@ -107,5 +113,6 @@ We have chosen a development environment consisting of Ubuntu14.10 and LAMP. To 
 Not actively seeking contribution at this time
 
 
-
-
+----
+## Change-log
+* 13-Oct-2016
