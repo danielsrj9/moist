@@ -114,5 +114,5 @@ Not actively seeking contribution at this time
 
 
 ----
-## Change-log
+## changelog
 * 13-Oct-2016
