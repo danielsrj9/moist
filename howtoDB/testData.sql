@@ -11,4 +11,3 @@ insert into TestData values(NOW(),2.434);
 insert into TestData values(NOW(),10.34);
 insert into TestData values(NOW(),7.33);
 insert into TestData values(NOW(),11.12);
-o
