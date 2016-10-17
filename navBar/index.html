@@ -67,7 +67,6 @@
                     <ul class="dropdown-menu">
                       <li><a href="#">Reading Tables and Charts</a></li> 
                       <li><a href="#">Frequently Asked Questions</a></li> 
-                      <li><a href="#">Pop Over Tour</a></li> 
                     </ul>
                   </li>
                 </ul> 
@@ -209,15 +208,12 @@
 
 			g =  new Dygraph(
           document.getElementById("graphdiv"),
-					"2008-05-07,75\n" +
-					"2008-05-08,70\n" +
-					"2008-05-09,80\n"
-					,
+					"testdata.csv",
           {
-            rollPeriod: 14,
+            rollPeriod: 6,
             showRoller: true,
             customBars: true,
-            ylabel: 'Temperature (F)',
+            ylabel: 'Evapotranspiration',
             legend: 'always',
             labelsDivStyles: { 'textAlign': 'right' },
             showRangeSelector: true,
