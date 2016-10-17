@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>NavBar Template</title>
+    <title>Chart/Sensors Home</title>
 
 
     <!-- Bootstrap -->
@@ -63,6 +63,7 @@
                     <ul class="dropdown-menu">
                       <li><a href="#">Reading Tables and Charts</a></li> 
                       <li><a href="#">Frequently Asked Questions</a></li> 
+                      <li><a href="#">Pop Over Tour</a></li> 
                     </ul>
                   </li>
                 </ul> 
@@ -77,26 +78,25 @@
 </nav>
 
 
-
 	 <div class = "container">
 		<div class = "row"><!-- cols add up to 12 -->
 		<div class = "col-md-4 panel panel-default"> <!--  When we refresh (making the screen bigger) only take up 2 rows (medium font) -->
       <h1 class="panel-heading"> <span class="glyphicon glyphicon-cloud"></span> Weather </h1>
+			<a href="http://www.accuweather.com/en/us/knoxville-tn/37902/weather-forecast/331087" class="aw-widget-legal"> <!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.  --> </a><div id="awcc1476664868832" class="aw-widget-current"  data-locationkey="331087" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1476664868832"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
       <br> 
-      <br> 
-      <br> 
-      <br> 
-      <br> 
-      <button type="button" class="btn btn-default pull-right" >View Weather</button>
+      <button type="button" class="btn btn-default pull-right" >View Outlook</button>
       <br> 
       <br> 
       <br> 
 		</div>
 		<div class = "col-md-4 panel panel-default"> <!--  When we refresh (making the screen bigger) only take up 2 rows (medium font) -->
 		<h1 class="panel-heading"><span class="glyphicon glyphicon-hdd"></span> Sensors </h1>
-      <br> 
-      <br> 
-      <br> 
+    <ul class="list-group">
+      <li class="list-group-item">D001 <span class="badge">online</span></li>			
+      <li class="list-group-item">D002 <span class="badge">online</span></li>			
+      <li class="list-group-item list-group-item-danger">D003 <span class="badge">offline!</span></li>			
+      <li class="list-group-item">D004 <span class="badge">online</span></li>			
+    </ul>
       <br> 
       <br> 
       <button type="button" class="btn btn-default pull-right" >View Sensors </button>
@@ -106,10 +106,18 @@
 		</div>
 		<div class = "col-md-4 panel panel-default"> <!--  When we refresh (making the screen bigger) only take up 2 rows (medium font) -->
 		<h1 class="panel-heading"> <span class="glyphicon glyphicon-stats"></span> Data</h1>
+      <div class = "container">
+      <div class = "row">
       <br> 
-      <br> 
-      <br> 
-      <br> 
+      <!--<section class="col-sm-6 col-md-4 col-lg-2">-->
+          <section class="col-sm-offset-0 col-sm-6 col-md-4 col-lg-3">
+          <!--<section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-6">-->
+        <img src = "img/dataIcon.png"
+          class = "img-rounded img-responsive center-block"
+          alt = "A nice Icon!">
+        </section>
+      </div>
+       </div>
       <br> 
       <button type="button" class="btn btn-default pull-right" >View Data</button>
       <br> 
@@ -120,58 +128,57 @@
 		</div>
 
 
-		<div class="container">
-			<h1>Scrollable <small>When the screen is small</small> </h1>
-			<div class="row">
-				<section class="col-xs-12">
-					<div class = "table-responsive">
+    <!-- <div class="container"> -->
+    <!-- <h1>Scrollable <small>When the screen is small</small> </h1> -->
+    <!-- <div class="row"> -->
+    <!-- <section class="col-xs-12"> -->
+    <!-- <div class = "table-responsive"> -->
+    <!-- <table class = "table table-bordered table-hover"> -->
+    <!-- <thead> -->
+    <!-- <tr> -->
+    <!-- <th>Class</th> -->
+    <!-- <th>Color</th> -->
+    <!-- <th>Description</th> -->
+    <!-- </tr> -->
+    <!-- </thead> -->
+    <!-- <tbody> -->
+    <!-- <tr> -->
+    <!-- <th scope="row">Normal</th> -->
+    <!-- <td class = "info">Default</td> -->
+    <!-- <td>Default color to a particular row or cell</td> -->
+    <!-- </tr> -->
+    <!-- <tr class="active"> -->
+    <!-- <th scope="row">active</th> -->
+    <!-- <td>Gray</td> -->
+    <!-- <td>Active color to a particular row or cell</td> -->
+    <!-- </tr> -->
+    <!-- <tr class = "success"> -->
+    <!-- <th scope="row">success</th> -->
+    <!-- <td>Green</td> -->
+    <!-- <td>A successful or positive action</td> -->
+    <!-- </tr> -->
+    <!-- <tr class = "info"> -->
+    <!-- <th scope="row">info</th> -->
+    <!-- <td>Blue</td> -->
+    <!-- <td>A neutral informative change or action</td> -->
+    <!-- </tr> -->
+    <!-- <tr class = "warning"> -->
+    <!-- <th scope="row">warning</th> -->
+    <!-- <td>Yellow</td> -->
+    <!-- <td>A warning that might need attention, but not too scary</td> -->
+    <!-- </tr> -->
+    <!-- <tr class = "danger"> -->
+    <!-- <th scope="row">danger</th> -->
+    <!-- <td>Red</td> -->
+    <!-- <td>Dangerous or potentially negative action</td> -->
+    <!-- </tr> -->
+    <!-- </tbody> -->
+    <!-- </table> -->
 
-						<table class = "table table-bordered table-hover">
-								<thead>
-									<tr>
-									<th>Class</th>
-									<th>Color</th>
-									<th>Description</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-									<th scope="row">Normal</th>
-									<td class = "info">Default</td>
-									<td>Default color to a particular row or cell</td>
-									</tr>
-									<tr class="active">
-									<th scope="row">active</th>
-									<td>Gray</td>
-									<td>Active color to a particular row or cell</td>
-									</tr>
-									<tr class = "success">
-									<th scope="row">success</th>
-									<td>Green</td>
-									<td>A successful or positive action</td>
-									</tr>
-									<tr class = "info">
-									<th scope="row">info</th>
-									<td>Blue</td>
-									<td>A neutral informative change or action</td>
-									</tr>
-									<tr class = "warning">
-									<th scope="row">warning</th>
-									<td>Yellow</td>
-									<td>A warning that might need attention, but not too scary</td>
-									</tr>
-									<tr class = "danger">
-									<th scope="row">danger</th>
-									<td>Red</td>
-									<td>Dangerous or potentially negative action</td>
-									</tr>
-								</tbody>
-								</table>
-
-					</div>
-				</section>
-			</div>
-		</div>
+    <!-- </div> -->
+    <!-- </section> -->
+    <!-- </div> -->
+    <!-- </div> -->
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -6,3 +6,12 @@
   background-color: orange;
   border-color:none; 
 }
+
+@media (max-height: 767px){
+  .img-responsive{
+    max-height: 45%;
+    min-width: 60%;
+    max-width: 90%;
+  }
+}
+
