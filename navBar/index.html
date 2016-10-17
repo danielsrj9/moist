@@ -10,10 +10,14 @@
     <title>Chart/Sensors Home</title>
 
 
+  <script type="text/javascript"
+            src="js/dygraph-combined-dev.js"></script>
+
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"> 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -82,7 +86,19 @@
 		<div class = "row"><!-- cols add up to 12 -->
 		<div class = "col-md-4 panel panel-default"> <!--  When we refresh (making the screen bigger) only take up 2 rows (medium font) -->
       <h1 class="panel-heading"> <span class="glyphicon glyphicon-cloud"></span> Weather </h1>
-			<a href="http://www.accuweather.com/en/us/knoxville-tn/37902/weather-forecast/331087" class="aw-widget-legal"> <!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.  --> </a><div id="awcc1476664868832" class="aw-widget-current"  data-locationkey="331087" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1476664868832"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+
+        <div class = "container">
+        <div class = "row">
+        <br> 
+        <!--<section class="col-sm-6 col-md-4 col-lg-2">-->
+            <section class="col-sm-3 col-md-3 col-lg-3">
+            <!--<section class="col-xs-offset-3 col-xs-6 col-sm-offset-0 col-sm-6 col-md-4 col-lg-6">-->
+            <a href="http://www.accuweather.com/en/us/knoxville-tn/37902/weather-forecast/331087" class="aw-widget-legal"> <!-- By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.  --> </a><div id="awcc1476664868832" class="aw-widget-current"  data-locationkey="331087" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1476664868832"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+          </section>
+        </div>
+         </div>
+
+
       <br> 
       <button type="button" class="btn btn-default pull-right" >View Outlook</button>
       <br> 
@@ -96,7 +112,9 @@
       <li class="list-group-item">D002 <span class="badge">online</span></li>			
       <li class="list-group-item list-group-item-danger">D003 <span class="badge">offline!</span></li>			
       <li class="list-group-item">D004 <span class="badge">online</span></li>			
+      <li class="list-group-item">D005 <span class="badge">online</span></li>			
     </ul>
+      <br> 
       <br> 
       <br> 
       <button type="button" class="btn btn-default pull-right" >View Sensors </button>
@@ -108,6 +126,8 @@
 		<h1 class="panel-heading"> <span class="glyphicon glyphicon-stats"></span> Data</h1>
       <div class = "container">
       <div class = "row">
+      <br> 
+      <br> 
       <br> 
       <!--<section class="col-sm-6 col-md-4 col-lg-2">-->
           <section class="col-sm-offset-0 col-sm-6 col-md-4 col-lg-3">
@@ -179,6 +199,39 @@
     <!-- </section> -->
     <!-- </div> -->
     <!-- </div> -->
+
+
+<div class="jumbotron">
+<div class="container">
+	<div class="row row-centered">
+	<div id="graphdiv" class="col-centered"></div>
+	<script type="text/javascript">
+
+			g =  new Dygraph(
+          document.getElementById("graphdiv"),
+					"2008-05-07,75\n" +
+					"2008-05-08,70\n" +
+					"2008-05-09,80\n"
+					,
+          {
+            rollPeriod: 14,
+            showRoller: true,
+            customBars: true,
+            ylabel: 'Temperature (F)',
+            legend: 'always',
+            labelsDivStyles: { 'textAlign': 'right' },
+            showRangeSelector: true,
+            rangeSelectorHeight: 30,
+            rangeSelectorPlotStrokeColor: 'yellow',
+            rangeSelectorPlotFillColor: 'lightyellow'
+          });
+
+
+	</script>
+</div>
+</div>
+</div>
+
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
