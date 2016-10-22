@@ -3,8 +3,9 @@ $(document).ready(function () {
           document.getElementById("noroll"),
           "../assets/temperatures.csv",
           {
-            customBars: true,
-            ylabel: 'Temperature (F)',
+//            customBars: true,
+            ylabel: 'time squared',
+            xlabel: 'time',
             legend: 'always',
             labelsDivStyles: { 'textAlign': 'right' },
             showRangeSelector: true
