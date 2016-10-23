@@ -80,104 +80,50 @@
 
 
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
 
-      <section class="col-xs-12 col-md-5 col-sm-6 panel panel-default">
-        <h2 class="panel-heading"><span class="glyphicon glyphicon-stats"></span>  Charts</h2>
+      <section class="col-xs-11 col-sm-12 panel panel-default">
+        <h2 class="panel-heading"><span class="glyphicon glyphicon-stats"></span>  Charts
+				  <button type="button" class="btn btn-default pull-right" ><a href="graph.html">View Charts</a></button>
+        </h2>
         <br>
-        <div id="noroll" style="width:300px; height:300px;"></div>
-        <br>
-				<button type="button" class="btn btn-default pull-right" ><a href="graph.html">View Charts</a></button>
-        <br>
-        <br>
-        <br>
+          <div class="row">
+            <div id="noroll" class="col-xs-10" style="height:300px;" ></div>
+          </div>
+          <div class="row">
+            <br>
+            <br>
+          </div>
+
       </section>
 
-      <section class="col-xs-12 col-md-7 col-sm-6 panel panel-default">
-        <h2 class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Data</h2>
-					<div class="container">
+      <section class="col-xs-11 col-sm-12 panel panel-default">
+        <h2 class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Data
+				<button type="button" class="btn btn-default pull-right" ><a href="tables.html">View Data</a></button>
+        </h2>
+					<div class="container-fluid">
 						<div class="row">
-							<section class="col-xs-12 col-md-6 col-sm-6">
+							<section class="col-xs-12 col-sm-6">
 								<div class = "table-responsive">
 									<table class = "table table-bordered table-hover">
 											<thead>
 												<tr>
-												<th>Class</th>
-												<th>Color</th>
-												<th>Description</th>
+												<th>x</th>
+												<th>f(x)</th>
 												</tr>
 											</thead>
-											<tbody>
-												<tr>
-												<th scope="row">Normal</th>
-												<td class = "info">Default</td>
-												<td>Default color to a particular row or cell</td>
-												</tr>
-												<tr class="active">
-												<th scope="row">active</th>
-												<td>Gray</td>
-												<td>Active color to a particular row or cell</td>
-												</tr>
-												<tr class = "success">
-												<th scope="row">success</th>
-												<td>Green</td>
-												<td>A successful or positive action</td>
-												</tr>
-												<tr class = "info">
-												<th scope="row">info</th>
-												<td>Blue</td>
-												<td>A neutral informative change or action</td>
-												</tr>
-												<tr class = "warning">
-												<th scope="row">warning</th>
-												<td>Yellow</td>
-												<td>A warning that might need attention, but not too scary</td>
-												</tr>
-												<tr class = "danger">
-												<th scope="row">danger</th>
-												<td>Red</td>
-												<td>Dangerous or potentially negative action</td>
-												</tr>
-											</tbody>
+											<tbody id="tablearea"> </tbody>
 											</table>
 								</div>
 							</section>
 						</div>
 					</div>
 
-        <br>
-				<button type="button" class="btn btn-default pull-right" ><a href="tables.html">View Data</a></button>
-        <br>
-        <br>
-        <br>
-        <br>
-      </section>
-
-      <section class="col-xs-12 panel panel-default">
-        <h2 class="panel-heading"><span class="glyphicon glyphicon-hdd"></span> Sensors</h2>
-
-			<ul class="list-group">
-      <li class="list-group-item">Temperature <span class="badge">connected</span></li>
-      <li class="list-group-item">Depth <span class="badge">connected</span></li>
-      <li class="list-group-item list-group-item-danger">Humidity <span class="badge">disconnected</span></li>
-      <li class="list-group-item">Moisture <span class="badge">connected</span></li>
-			</ul>
-        <br>
-				<button type="button" class="btn btn-default pull-right" ><a href="sensors.html">View Sensors</a></button>
-        <br>
-        <br>
-        <br>
       </section>
 
     </div>
   </div>
-
-
-
-  <div id="tablearea">
-  </div>
-
 
 
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
