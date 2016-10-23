@@ -1,6 +1,6 @@
 ----
 ## Purpose:
-> This simple skeleton is a stripped down (no css) version created for the explicit demonstration of basic environment setup and utilization.
+> This simple skeleton is a stripped down (no sql) version created for the explicit demonstration of basic environment setup and utilization.
 
 ----
 ## QuickStart:
