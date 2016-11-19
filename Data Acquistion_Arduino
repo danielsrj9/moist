@@ -17,6 +17,8 @@ Lux,BP,RSM,RH,T1,T2,Measurement Cycles
 0.00,0.92,511.00,67.00,307.00,24.00,15
 */
 
+#include <Time.h>
+#include <TimeLib.h>
 
 // Libraries for ethernet, SD, DHT11 sensors, and SPI
 
@@ -45,21 +47,23 @@ float Reading;    // Sum of the readings in the ArrayIndex
 float AvgReading; // Average value of the collected readings
 float AvgSensorVoltage; // Converted ADC voltage to Average input voltage from sensor
 
-// Barometric Pressure Constants
+// Light Sensor Constants
+const float Luxk0 = 0; // intercept 0-6000 lux
+const float Luxk1 = 1692; // slope lux/V
+
+
+/*// Barometric Pressure Constants
 //From Original Manual
-float BRk0 = 0.809; //intercept of BR sensor atmospheres
-float BRk1 = 0.077; //slope of BR sensor atmospheres
+const float BRk0 = 0.809; //intercept of BR sensor atmospheres
+const float BRk1 = 0.077; //slope of BR sensor atmospheres
 
 //float BRk0 = 24.215; // intercept mercury
 //float BRk1 = 2.292; // slope mercury
-
-// Light Sensor Constants
-
+*/
 
 // DHT11 Humidity & Temperature
 #define DHTPIN 22
 #define DHTTYPE DHT11
-
 DHT dht(DHTPIN, DHTTYPE);
 
 
@@ -83,8 +87,8 @@ float TempC;
 
 
 // Reporting Values
-float Light = 0; // Vernier BP sensor with 5V Vcc
-float BP = 0; // Vernier BP sensor with 5V Vcc
+float Lux = 0; // Vernier BP sensor with 5V Vcc
+//float BP = 0; // Vernier BP sensor with 5V Vcc
 float SM = 0; // DFRobot corrosion resistant SM sesnor with 5V Vcc
 float Humidity = 0; // DHT11 sensor with 5V Vcc
 float Temp1 = 0 ; // Thermistor with 3.3V Vcc
@@ -93,29 +97,50 @@ float Temp2 = 0; // DHT11 sensor with 5V Vcc
 int count = 0;
 int MeasurementCycles = 0;
 
-int LEDPIN = 13;
+int LEDDAQ = 13;
+int LEDSD = 44;
+
+File Evapotranspiration;
+const int chipSelect = 53;
 
 void setup() {
-  Seraial.begin(9600);
+  Serial.begin(9600);
   dht.begin();
 
   pinMode(A0, INPUT); // Analog Lux
-  pinMode(A2, INPUT); // Analog BP
+//  pinMode(A2, INPUT); // Analog BP
   pinMode(A8, INPUT); // Analog SM
   pinMode(DHTPIN, INPUT);  // Digital Humidity
   pinMode(A9, INPUT);// Analog Temp
   pinMode(DHTPIN, INPUT);  // Digital Temp
 
-  pinMode(13, OUTPUT);// Indicator LED
+  pinMode(LEDDAQ, OUTPUT);// Indicator for DAQ cycle
+  pinMode(LEDSD, OUTPUT);// Indicator for successful SD card access
 
+  Serial.print("Time, ");
   Serial.print("Lux,");
-  Serial.print("BP,");
+//  Serial.print("BP,");
   Serial.print("RSM,");
   Serial.print("RH,");
   Serial.print("T1,");
   Serial.print("T2,");
   Serial.println("Measurement Cycles");
   Serial.flush();
+
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+
+  Serial.print("Initializing SD card...");
+
+  // see if the card is present and can be initialized:
+  if (!SD.begin(chipSelect)) {
+    Serial.println("Card failed, or not present");
+    // don't do anything more:
+    return;
+  }
+  Serial.println("card initialized.");
+
 }
 
 //Main loop that calls DAQ and sensor functions
@@ -123,28 +148,47 @@ void setup() {
 
 void loop() {
 
+  String dataString = "";
+
+  //Time Stamping in year, month, day, hour, minute, second
+  /*********************************************/
+
+  setTime();
+
+  // Sensor Data Aquisition
+  /*********************************************/
+  
   if (count == 0) {
     //Serial.print("Entering Light Read: ");
     DAQ();
     VernierLux();
-    Serial.print(Light);
+    dataString += String(Lux);
+    dataString += ",";
+    Serial.print(Lux);
     Serial.print(",");
     Serial.flush();
+    count++; // Took out the BP sensor, so this skips count = 1
   }
 
+/*
   if (count == 1) {
     //Serial.print("Entering Barometric Pressure Read: ");
     DAQ();
     VernierBP();
+    dataString += String(BP);
+    dataString += ",";
     Serial.print(BP);
     Serial.print(",");
     Serial.flush();
   }
+*/
 
   if (count == 2) {
     //Serial.print("Entering Soil Mositure Read: ");
     DAQ();
     DFRobotSM();
+    dataString += String(SM);
+    dataString += ",";
     Serial.print(SM);
     Serial.print(",");
     Serial.flush();
@@ -153,6 +197,8 @@ void loop() {
   if (count == 3) { // DHT11 is a digital sensor and requires different handling
     //Serial.print("Entering Humidity Read: ");
     DHT11Humdity();
+    dataString += String(Humidity);
+    dataString += ",";
     Serial.print(Humidity);
     Serial.print(",");
     Serial.flush();
@@ -162,6 +208,8 @@ void loop() {
     //Serial.print("Entering Thermistor Read: ");
     DAQ();
     TempThermistor();
+    dataString += String(Temp1);
+    dataString += ",";
     Serial.print(Temp1);
     Serial.print(",");
     Serial.flush();
@@ -170,22 +218,55 @@ void loop() {
   if (count == 5) { // DHT11 is a digital sensor and requires different handling
     //Serial.print("Entering DHT11 Temp Read: ");
     DHT11Temp();
+    dataString += String(Temp2);
+    dataString += ",";
     Serial.print(Temp2);
     Serial.print(",");
     Serial.flush();
   }
 
+  /*if (count > 5) {
+    Serial.println("Fatal Error!");
+    return;
+    } // end of else statements
+  */
   count = 0;
   MeasurementCycles++;
+  dataString += String(MeasurementCycles);
 
-  digitalWrite(LEDPIN, HIGH);
+  digitalWrite(LEDDAQ, HIGH);
+  delay(1);
+  digitalWrite(LEDDAQ, LOW);
+  delay(1);
 
   Serial.print(MeasurementCycles);
   Serial.println("");
   Serial.flush();
 
+  // open the file. *Note that only one file can be open at a time,
+  // so you have to close this one before opening another.
+  Evapotranspiration = SD.open("Test1.txt", FILE_WRITE);
+
+  // if the file is available, write to it:
+  if (Evapotranspiration) {
+    Evapotranspiration.println(dataString);
+    Evapotranspiration.close();
+    // print to the serial port too:
+    //Serial.println(dataString);
+
+    analogWrite(LEDSD, 75);
+    delay(10);
+    analogWrite(LEDSD, 0);
+    delay(10);
+  }
+
+  // if the file isn't open, pop up an error:
+  else {
+    Serial.println("error opening Test1.txt");
+  }
+
   delay(2000);
-}
+} // end of void loop
 
 // Generic data collection for sensors
 /*********************************************/
@@ -199,7 +280,7 @@ int DAQ() {
 
   for (i = 0; i < NUMSAMPLES; i++) {
     samples[i] = analogRead(A0);
-    delay(10);
+    //delay(10);
   }
 
   // average all the samples out
@@ -229,16 +310,18 @@ int DAQ() {
 /*********************************************/
 
 int VernierLux() {
-
+  Lux = Luxk1 * AvgSensorVoltage + Luxk0;
   count++;
-  return Light;
+  return Lux;
 }
 
+/*
 int VernierBP() {
   BP = AvgSensorVoltage * BRk1 + BRk0;
   count++;
   return BP;
 }
+*/
 
 int DFRobotSM() {
   SM = analogRead(A8);
@@ -286,7 +369,7 @@ int DHT11Temp() {
     Serial.println("Failed to read from DHT sensor!");
     DHT11Temp();
   }
-  
+
   count++;
   return Temp2;
 }
