@@ -1,13 +1,13 @@
 <!-- Author: Adam Rosenbaum: (c) 2016 regents of University of Tennessee> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Moist Home</title>
+    <title>Pi2Plot</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
-            </button> <a href="#"class="navbar-brand">M<span class="glyphicon glyphicon-tint"></span>ist</a>
+            </button> <a href="#"class="navbar-brand">pi2PL<span class="glyphicon glyphicon-tint"></span>t</a>
           </div>
 
 
@@ -47,18 +47,7 @@
                       <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a href="graph.html">Charts </a></li>
-                      <li><a href="tables.html">Tables</a></li>
-                    </ul>
-                  </li>
-                  <li >
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                      aria-expanded="false">Help
-                      <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
                       <li><a href="loading.html">Loading Tables and Charts</a></li>
-                      <li><a href="faq.html">Frequently Asked Questions</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -66,17 +55,9 @@
           </div>
 
         </section>
-
-
       </div>
     </div>
 </nav>
-
-
-
-
-
-
 
 
   <div class="container-fluid">
@@ -84,52 +65,29 @@
 
       <section class="col-xs-12 col-sm-12 panel panel-default">
         <h2 class="panel-heading"><span class="glyphicon glyphicon-stats"></span>  Charts
-				  <button type="button" class="btn btn-default pull-right" ><a href="graph.html">View Charts</a></button>
+				  <button type="button" class="btn btn-default pull-right" ><a href="https://docs.google.com/spreadsheets/d/1G42YFuYu8xofDPlyA1tY4WJsgalqHyfLGcIWrXtAF2k/edit?usp=sharing">View Charts</a></button>
         </h2>
         <br>
           <div class="row">
-            <div id="noroll" class="col-xs-10 col-md-11 col-lg-11" style="height:300px;" ></div>
+            <div id="dashboard_div" class="col-xs-10 col-md-11 col-lg-11" style="height:300px;" >
+							<!--Divs that will hold each control and chart-->
+							<div id="chart_div"></div>
+							<br/>
+							<div align="center" id="filter_div"></div>
+						</div>
           </div>
           <div class="row">
             <br>
             <br>
           </div>
-
       </section>
-
-      <section class="col-xs-12 col-sm-12 panel panel-default">
-        <h2 class="panel-heading"><span class="glyphicon glyphicon-list-alt"></span> Data
-				<button type="button" class="btn btn-default pull-right" ><a href="tables.html">View Data</a></button>
-        </h2>
-					<div class="container-fluid">
-						<div class="row">
-							<section class="col-xs-12 col-sm-12">
-								<div class = "table-responsive">
-									<table class = "table table-bordered table-hover">
-											<thead>
-												<tr>
-												<th>x</th>
-												<th>f(x)</th>
-												</tr>
-											</thead>
-											<tbody id="tablearea"> </tbody>
-											</table>
-								</div>
-							</section>
-						</div>
-					</div>
-
-      </section>
-
-    </div>
-  </div>
-
-
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="js/script.js"></script>
-		<script type="text/javascript" src="js/dygraph-combined-dev.js"></script>
+		<!--<script type="text/javascript" src="js/dygraph-combined-dev.js"></script>-->
   </body>
+
 </html>
