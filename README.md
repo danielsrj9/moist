@@ -1,5 +1,7 @@
 # Irrigation Balance Monitoring System
 
+For a review of the project outcome [click here](https://github.com/arosenb4/moist/blob/master/overview.pdf)
+
 ----
 ## Purpose
 
